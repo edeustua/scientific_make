@@ -448,6 +448,9 @@ INPUTS := $(addsuffix .inp,$(PATHS))
 \begin{makefile}
 requisites.txt: A couple of words
     echo $^ > $@
+
+A couple of words:
+
 \end{makefile}
 \begin{lstlisting}
 $ cat requisites.txt
@@ -523,6 +526,16 @@ clean:
 
   \end{tikzpicture}
 \end{center}
+\end{frame}
+
+\begin{frame}{Conclusion}
+  Hopefully, I have convinced you that:
+  \begin{enumerate}[<+->]
+    \item \textco{Make} is not so bad! It is just a bunch of dependency rules
+    \item It can help you drive computations efficiently, without rerunning
+      stuff twice.
+    \item It is a tool that simplifies many different tasks, not only building software
+  \end{enumerate}
 \end{frame}
 
 

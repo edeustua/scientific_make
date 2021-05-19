@@ -6,7 +6,7 @@ INPUTS := $(wildcard inputs/*.inp)
 OUTPUTS := $(addsuffix .dat,$(subst inputs,outputs,$(INPUTS)))
 FIGURE := h2_dissociation.png
 
-.PHONY: clean
+.PHONY: clean view
 
 # Plot the PES figure, that is our final goal.
 $(FIGURE): $(OUTPUTS) plot_pes.py
@@ -30,3 +30,7 @@ outputs:
 # the project.
 clean:
 	rm -fr outputs $(FIGURE)
+
+# This is a helper to open the resulting figure
+view:
+	xdg-open $(FIGURE)
