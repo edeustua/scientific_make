@@ -270,7 +270,7 @@ $ cat [A FILE] > [ANOTHER FILE]
   \end{frame}
 
 
-  \begin{frame}{What is \texttt{Make}}
+  \begin{frame}{What is \texttt{Make}?}
     \begin{itemize}[<+->]
     \item \textco{make} is a \alert{build automation system tool} designed to build
       binary executables and libraries from source files.
@@ -287,11 +287,7 @@ $ cat [A FILE] > [ANOTHER FILE]
     \item Full manual
       \url{https://www.gnu.org/software/make/manual/make.html}
   \end{itemize}
-  \visible<+->{
-    \begin{center}
-    \textco{\$ make [TARGET]}
-  \end{center}
-}
+
   \end{frame}
 
 
@@ -299,10 +295,10 @@ $ cat [A FILE] > [ANOTHER FILE]
     \frametitle{How does it work?}
 
     \begin{enumerate}[<+->]
-    \item \textco{make} parses a \textco{Makefile}, consisting of a set of rules
+    \item \textco{make} parses a \textco{Makefile} consisting of a set of \textbf{file-creation rules}
       which completely \alert{defines its behavior}.
     \item generates a \alert{dependency graph}
-    \item \alert{runs rules} following the dependencies until \alert{all files
+    \item \alert{runs recipes} following the graph until \alert{all files
       have been generated} and \alert{all timestamps follow the dependency order}.
     \end{enumerate}
 
@@ -402,15 +398,16 @@ $ make
   \item load the rules
   \item create the dependency graph
     \item and start executing the
-      recipes, starting with the first rule in the \textco{Makefile}.
+      recipes, beginning with the first rule in the \textco{Makefile}.
     \end{enumerate}
 
-  \pause
+  \begin{exampleblock}{Tip}<+->
   One can select a particular \textco{[TARGET]} to execute by passing it to
   \textco{make}, as so
 \begin{lstlisting}
 $ make [TARGET]
 \end{lstlisting}
+\end{exampleblock}
 
 \end{frame}
 
@@ -450,12 +447,7 @@ requisites.txt: A couple of words
     echo $^ > $@
 
 A couple of words:
-
 \end{makefile}
-\begin{lstlisting}
-$ cat requisites.txt
-A couple of words
-\end{lstlisting}
     where \textco{\$\^} holds all prerequisites and \textco{\$@}, the target.
     \pause
 
@@ -482,6 +474,7 @@ A couple of words
 clean:
     rm *.o
 \end{makefile}
+  \pause
   Normally, this rule will try to find a file named \textco{clean} in the
   working directory, and if it exists the rule would not be executed. To let
   \textco{Make} know this is a dummy rule one can use the \textco{.PHONY} declaration:
