@@ -348,13 +348,13 @@ LINKER := gcc
 #    [RECIPE]
 
 parser.x: main.o ast.o
-    $(LINKER) main.o ast.o
+    $(LINKER) -o parser.x main.o ast.o
 
 main.o: main.h main.c ast.h
-    $(COMPILER) -c main.c
+    $(COMPILER) -o main.o -c main.c
 
 ast.o: ast.h ast.c
-    $(COMPILER) -c ast.o
+    $(COMPILER) -o ast.o -c ast.c
 \end{makefile}
 \end{frame}
 
